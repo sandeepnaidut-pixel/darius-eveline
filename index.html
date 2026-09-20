@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Wedding Darius & Eveline</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         body {
             background-color: #111;
@@ -23,100 +23,95 @@
             background-color: #fdfaf6;
             position: relative;
             overflow: hidden;
-            border: 4px solid #333;
-            border-radius: 8px;
+            border: 4px solid #fff;
+            border-radius: 12px;
             image-rendering: pixelated;
+            box-shadow: 0 0 30px rgba(255, 182, 193, 0.4);
         }
 
-        /* Soft striped wallpaper */
         #wall {
             width: 100%;
-            height: 65%;
+            height: 70%;
             position: absolute;
             top: 0;
             background: repeating-linear-gradient(
                 45deg,
-                #fdf8f9,
-                #fdf8f9 15px,
-                #ffffff 15px,
-                #ffffff 30px
+                #fff0f5,
+                #fff0f5 20px,
+                #ffe4e1 20px,
+                #ffe4e1 40px
             );
         }
 
-        /* Glowing Fairy Lights */
-        .glow-light {
+        .sparkle {
             position: absolute;
-            width: 6px;
-            height: 6px;
-            background-color: #fffacd;
+            width: 4px;
+            height: 4px;
+            background-color: #fff;
             border-radius: 50%;
-            box-shadow: 0 0 10px 4px rgba(255, 250, 205, 0.6);
-            animation: pulse 3s infinite alternate;
+            box-shadow: 0 0 8px 3px #fffacd;
+            animation: twinkle 4s infinite ease-in-out;
         }
 
-        /* Beautiful Floral Banner */
         #banner {
             position: absolute;
             top: 6%;
             left: 50%;
             transform: translateX(-50%);
             width: 85%;
-            background: linear-gradient(to right, #ffffff, #fcfcfc);
-            border: 2px solid #e5c158;
-            border-radius: 12px;
-            padding: 12px 5px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #ffb6c1;
+            border-radius: 20px;
+            padding: 15px 10px;
             text-align: center;
-            color: #4a4a4a;
-            font-size: 13px;
+            color: #d87093;
+            font-family: 'Dancing Script', cursive;
+            font-size: 28px;
             z-index: 10;
-            box-shadow: 0px 4px 10px rgba(229, 193, 88, 0.2);
-            line-height: 1.4;
+            box-shadow: 0px 6px 15px rgba(255, 182, 193, 0.4);
         }
         
         .flower {
             color: #ff9fb4;
-            font-size: 14px;
+            font-size: 22px;
+            vertical-align: middle;
         }
 
-        /* Light Grey Carpet */
         #carpet {
             width: 100%;
-            height: 35%;
+            height: 30%;
             position: absolute;
             bottom: 0;
-            background-color: #e8e9eb;
-            border-top: 3px solid #d1d3d6;
+            background-color: #f0f0f0;
+            border-top: 4px solid #e0e0e0;
             z-index: 2;
         }
 
-        /* Dais Platform */
         #dais {
             position: absolute;
             bottom: 22%;
             left: 50%;
             transform: translateX(-50%);
-            width: 260px;
+            width: 280px;
             height: 40px;
             background-color: #ffffff;
-            border: 2px solid #dcdcdc;
-            border-bottom: 6px solid #cccccc;
             border-radius: 20px 20px 0 0;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
             z-index: 5;
         }
 
-        /* Table in Front */
         #table {
             position: absolute;
-            bottom: 12%;
+            bottom: 8%;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
-            height: 30px;
+            width: 160px;
+            height: 45px;
             background-color: #ffffff;
-            border: 2px solid #e0e0e0;
-            border-bottom: 4px solid #d3d3d3;
+            border-radius: 8px;
             z-index: 25;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+            border-bottom: 5px solid #f5f5f5;
         }
 
         .sprite {
@@ -125,117 +120,128 @@
             cursor: pointer;
         }
 
-        #drums { 
-            bottom: 28%; 
-            left: -2%; 
-            width: 100px; 
-            z-index: 4; 
+        #drums { bottom: 25%; left: 2%; width: 100px; z-index: 8; }
+        #couple { bottom: 25%; left: 50%; width: 230px; z-index: 15; transform: translateX(-50%); }
+        #cats { bottom: 3%; left: 10%; width: 65px; z-index: 35; }
+        #book {
+            bottom: 12%; 
+            left: 32%; 
+            width: 50px; 
+            z-index: 30; 
+            filter: sepia(0.8) hue-rotate(-30deg) saturate(1.5) brightness(0.9);
         }
 
-        #couple { 
-            bottom: 26%; 
-            left: 50%; 
-            width: 210px; 
-            z-index: 15; 
-            transform: translateX(-50%);
+        /* Floating Balloons */
+        .balloon {
+            width: 45px;
+            z-index: 14; /* Sits just behind the archway */
+            animation: float 4s infinite ease-in-out;
         }
-        
-        /* Container for Cake and Candles */
+        #balloon-left { bottom: 48%; left: 18%; animation-delay: 0s; }
+        #balloon-right { bottom: 50%; right: 18%; animation-delay: 2s; }
+
         #cake-container {
             position: absolute;
-            bottom: 15%; 
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 90px;
+            bottom: 11%; 
+            left: 55%; 
+            width: 75px;
+            height: 80px;
             z-index: 30;
             cursor: pointer;
         }
+        #cake { width: 100%; position: absolute; bottom: 0; }
 
-        #cake {
-            width: 100%;
-            position: absolute;
-            bottom: 0;
-        }
-
-        /* Candles */
         .candle {
             position: absolute;
             width: 4px;
-            height: 12px;
-            background-color: #fdfdfd;
+            height: 14px;
+            background-color: #fff;
             border-left: 1px solid #ccc;
             z-index: 31;
         }
         .flame {
             position: absolute;
-            top: -8px;
+            top: -10px;
             left: -1px;
             width: 6px;
-            height: 8px;
+            height: 10px;
             background-color: #ffb703;
             border-radius: 50% 50% 20% 20%;
-            animation: flicker 0.4s infinite alternate;
+            animation: flicker 0.3s infinite alternate;
+            box-shadow: 0 0 5px #ffb703;
         }
 
-        #cats { 
-            bottom: 5%; 
-            left: 10%; 
-            width: 65px; 
-            z-index: 35; 
-        }
-
-        /* Dynamic Dialogue Box */
         #dynamic-dialogue {
             position: absolute;
             top: 25%; 
             left: 50%;
             transform: translateX(-50%);
-            width: 80%;
-            background-color: rgba(255, 255, 255, 0.95);
-            border: 2px solid #e5c158;
-            border-radius: 8px;
-            color: #333;
-            padding: 12px;
+            width: 85%;
+            background-color: rgba(255, 255, 255, 0.98);
+            border: 3px solid #ffb6c1;
+            border-radius: 12px;
+            color: #555;
+            padding: 15px;
             box-sizing: border-box;
             z-index: 50;
             font-size: 10px;
-            line-height: 1.6;
+            line-height: 1.8;
             text-align: center;
             display: none;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 20px rgba(255, 182, 193, 0.5);
         }
 
-        /* Confetti */
+        /* Confetti and Drumsticks */
         .confetti {
             position: absolute;
-            width: 6px;
-            height: 6px;
+            width: 7px;
+            height: 7px;
             top: -10px;
             z-index: 100;
             animation: fall linear forwards;
+            border-radius: 2px;
         }
 
-        /* Keyframes */
+        .drumstick {
+            position: absolute;
+            width: 5px;
+            height: 35px;
+            background-color: #c29b62;
+            border-radius: 5px;
+            top: -40px;
+            z-index: 100;
+            animation: fall-stick linear forwards;
+            box-shadow: inset -2px 0 0 rgba(0,0,0,0.2);
+        }
+
         @keyframes fall {
-            to { transform: translateY(700px) rotate(360deg); }
+            to { transform: translateY(700px) rotate(720deg); }
+        }
+        
+        @keyframes fall-stick {
+            to { transform: translateY(700px) rotate(1440deg); }
         }
 
-        @keyframes pulse {
-            from { opacity: 0.4; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1.1); }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
         }
 
         @keyframes flicker {
             0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(0.85); opacity: 0.8; }
+            100% { transform: scale(0.85); opacity: 0.7; }
         }
 
         @keyframes idle {
             0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-2px); }
+            50% { transform: translateX(-50%) translateY(-3px); }
         }
-        .idle-anim { animation: idle 3.5s infinite ease-in-out; }
+        .idle-anim { animation: idle 3s infinite ease-in-out; }
 
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
@@ -253,16 +259,19 @@
 <body>
 
     <div id="game-container">
+        <!-- Hidden Audio Player -->
+        <audio id="bg-music" src="song.mp3" loop></audio>
+
         <div id="wall"></div>
         
-        <!-- Glowing Lights -->
-        <div class="glow-light" style="top: 15%; left: 15%;"></div>
-        <div class="glow-light" style="top: 25%; left: 85%;"></div>
-        <div class="glow-light" style="top: 35%; left: 10%;"></div>
-        <div class="glow-light" style="top: 45%; left: 80%;"></div>
+        <div class="sparkle" style="top: 20%; left: 15%; animation-delay: 0s;"></div>
+        <div class="sparkle" style="top: 30%; left: 85%; animation-delay: 1s;"></div>
+        <div class="sparkle" style="top: 45%; left: 10%; animation-delay: 2s;"></div>
+        <div class="sparkle" style="top: 50%; left: 80%; animation-delay: 0.5s;"></div>
+        <div class="sparkle" style="top: 15%; left: 50%; animation-delay: 1.5s;"></div>
 
         <div id="banner">
-            <span class="flower">✿</span> HAPPY WEDDING <span class="flower">✿</span>
+            <span class="flower">✿</span> Happy Wedding <span class="flower">✿</span>
         </div>
         
         <div id="carpet"></div>
@@ -272,13 +281,17 @@
         <img src="drums.png" class="sprite" id="drums" alt="Drums">
         <img src="cats.png" class="sprite" id="cats" alt="Cats">
         <img src="couple.png" class="sprite idle-anim" id="couple" alt="Darius and Eveline">
+        <img src="book.png" class="sprite" id="book" alt="Bible">
+        
+        <!-- Floating Balloons -->
+        <img src="balloon.png" class="sprite balloon" id="balloon-left" alt="Balloon">
+        <img src="balloon.png" class="sprite balloon" id="balloon-right" alt="Balloon">
 
         <div id="cake-container">
             <img src="cake.png" id="cake" alt="Wedding Cake">
-            <!-- Positioned candles on top of the cake -->
-            <div class="candle" style="left: 30px; bottom: 65px;"><div class="flame"></div></div>
-            <div class="candle" style="left: 40px; bottom: 75px;"><div class="flame"></div></div>
-            <div class="candle" style="left: 50px; bottom: 65px;"><div class="flame"></div></div>
+            <div class="candle" style="left: 28px; bottom: 60px;"><div class="flame"></div></div>
+            <div class="candle" style="left: 36px; bottom: 70px;"><div class="flame"></div></div>
+            <div class="candle" style="left: 44px; bottom: 60px;"><div class="flame"></div></div>
         </div>
 
         <div id="dynamic-dialogue"></div>
@@ -288,11 +301,20 @@
         const dialogueBox = document.getElementById('dynamic-dialogue');
         let typeTimeout;
         let hideTimeout;
+        let audioStarted = false;
+
+        // Start background music on the very first tap anywhere on the screen
+        document.body.addEventListener('click', () => {
+            if (!audioStarted) {
+                const bgMusic = document.getElementById('bg-music');
+                bgMusic.play().catch(error => console.log("Audio requires user interaction first."));
+                audioStarted = true;
+            }
+        });
 
         function showDialogue(text) {
             dialogueBox.style.display = 'block';
             dialogueBox.innerHTML = '';
-            
             clearTimeout(typeTimeout);
             clearTimeout(hideTimeout);
             
@@ -301,11 +323,11 @@
                 if (i < text.length) {
                     dialogueBox.innerHTML += text.charAt(i);
                     i++;
-                    typeTimeout = setTimeout(typeWriter, 50);
+                    typeTimeout = setTimeout(typeWriter, 40);
                 } else {
                     hideTimeout = setTimeout(() => {
                         dialogueBox.style.display = 'none';
-                    }, 4000);
+                    }, 5000);
                 }
             }
             typeWriter();
@@ -319,35 +341,63 @@
         }
 
         function throwConfetti() {
-            const colors = ['#ff9fb4', '#e5c158', '#ffffff', '#a8e6cf'];
-            for (let i = 0; i < 40; i++) {
+            const colors = ['#ffb6c1', '#ffc0cb', '#fffacd', '#e6e6fa', '#ffffff'];
+            for (let i = 0; i < 50; i++) {
                 let conf = document.createElement('div');
                 conf.classList.add('confetti');
                 conf.style.left = Math.random() * 100 + '%';
                 conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                conf.style.animationDuration = (Math.random() * 1.5 + 1.5) + 's';
+                conf.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
                 document.getElementById('game-container').appendChild(conf);
-                
-                // Cleanup DOM
-                setTimeout(() => conf.remove(), 3000);
+                setTimeout(() => conf.remove(), 3500);
             }
         }
 
-        // Interactions
+        function throwDrumsticks() {
+            for (let i = 0; i < 30; i++) {
+                let stick = document.createElement('div');
+                stick.classList.add('drumstick');
+                stick.style.left = Math.random() * 100 + '%';
+                stick.style.animationDuration = (Math.random() * 1.5 + 1.0) + 's';
+                document.getElementById('game-container').appendChild(stick);
+                setTimeout(() => stick.remove(), 2500);
+            }
+        }
+
+        document.getElementById('book').addEventListener('click', () => {
+            showDialogue('Colossians 3:14: "And over all these virtues put on love, which binds them all together in perfect unity."');
+            triggerBounce(document.getElementById('book'), false);
+        });
+
         document.getElementById('cats').addEventListener('click', () => {
             showDialogue('meow, meow, Darius & Eveline <3');
             triggerBounce(document.getElementById('cats'), false);
         });
 
+        // Easter Egg Logic for the Drums
+        let drumClicks = 0;
+        let drumTimer;
+
         document.getElementById('drums').addEventListener('click', () => {
-            showDialogue('da dum tssss.. congrats!!');
             triggerBounce(document.getElementById('drums'), false);
+            drumClicks++;
+            clearTimeout(drumTimer);
+
+            if (drumClicks >= 5) {
+                showDialogue('DA DUM TSSSS! DRUM SOLO!');
+                throwDrumsticks();
+                drumClicks = 0; 
+            } else {
+                showDialogue('da dum tssss.. congrats!!');
+                // Reset the count if they stop clicking for 2 seconds
+                drumTimer = setTimeout(() => { drumClicks = 0; }, 2000);
+            }
         });
 
         document.getElementById('cake-container').addEventListener('click', () => {
             const flames = document.querySelectorAll('.flame');
             flames.forEach(flame => flame.style.display = 'none');
-            triggerBounce(document.getElementById('cake-container'), true);
+            triggerBounce(document.getElementById('cake-container'), false);
         });
 
         document.getElementById('couple').addEventListener('click', () => {
