@@ -80,7 +80,7 @@
             z-index: 4;
         }
 
-        /* Elegant Cursive Banner */
+        /* Elegant Cursive Glowing Banner */
         #banner {
             position: absolute;
             top: 12%;
@@ -92,7 +92,8 @@
             border-radius: 20px;
             padding: 10px 10px;
             text-align: center;
-            color: #880e4f;
+            color: #ffa6c9;
+            text-shadow: 0 0 10px rgba(255, 182, 193, 0.9), 0 0 20px rgba(255, 105, 180, 0.6);
             font-family: 'Great Vibes', cursive;
             font-size: 42px;
             z-index: 10;
@@ -412,7 +413,21 @@
 
         document.getElementById('cake-container').addEventListener('click', () => {
             const flames = document.querySelectorAll('.flame');
-            flames.forEach(flame => flame.style.display = 'none');
+            let isLit = false;
+            
+            flames.forEach(flame => {
+                if (flame.style.display !== 'none') {
+                    isLit = true;
+                }
+                flame.style.display = 'none';
+            });
+
+            if (isLit) {
+                showDialogue('Make a wish!');
+            } else {
+                showDialogue('Time to cut the cake!');
+            }
+            
             triggerBounce(document.getElementById('cake-container'));
         });
 
