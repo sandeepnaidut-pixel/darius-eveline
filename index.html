@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #000000;
+            background-color: #111;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -28,86 +28,95 @@
             image-rendering: pixelated;
         }
 
-        /* Striped Wallpaper */
+        /* Soft striped wallpaper */
         #wall {
             width: 100%;
-            height: 70%;
+            height: 65%;
             position: absolute;
             top: 0;
             background: repeating-linear-gradient(
                 45deg,
-                #f8ecee,
-                #f8ecee 15px,
-                #fdf5f6 15px,
-                #fdf5f6 30px
+                #fdf8f9,
+                #fdf8f9 15px,
+                #ffffff 15px,
+                #ffffff 30px
             );
         }
 
-        /* Wedding Banner */
+        /* Glowing Fairy Lights */
+        .glow-light {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: #fffacd;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 4px rgba(255, 250, 205, 0.6);
+            animation: pulse 3s infinite alternate;
+        }
+
+        /* Beautiful Floral Banner */
         #banner {
             position: absolute;
-            top: 8%;
+            top: 6%;
             left: 50%;
             transform: translateX(-50%);
             width: 85%;
-            background-color: #ffffff;
-            border: 3px solid #d4af37;
-            padding: 12px 0;
+            background: linear-gradient(to right, #ffffff, #fcfcfc);
+            border: 2px solid #e5c158;
+            border-radius: 12px;
+            padding: 12px 5px;
             text-align: center;
-            color: #333;
-            font-size: 14px;
+            color: #4a4a4a;
+            font-size: 13px;
             z-index: 10;
-            box-shadow: 3px 3px 0px rgba(0,0,0,0.1);
+            box-shadow: 0px 4px 10px rgba(229, 193, 88, 0.2);
+            line-height: 1.4;
         }
         
         .flower {
-            color: #ff8da1;
+            color: #ff9fb4;
+            font-size: 14px;
         }
 
-        /* Wooden Stage */
-        #stage {
+        /* Light Grey Carpet */
+        #carpet {
             width: 100%;
             height: 35%;
             position: absolute;
-            bottom: 10%; /* Sits just above the audience */
-            background: repeating-linear-gradient(
-                90deg,
-                #d2b48c,
-                #d2b48c 25px,
-                #c4a47c 25px,
-                #c4a47c 50px
-            );
-            border-top: 6px solid #b3926a;
+            bottom: 0;
+            background-color: #e8e9eb;
+            border-top: 3px solid #d1d3d6;
             z-index: 2;
         }
 
-        /* Table for the Cake */
-        #table {
+        /* Dais Platform */
+        #dais {
             position: absolute;
-            bottom: 27%;
-            right: 8%;
-            width: 75px;
-            height: 45px;
+            bottom: 22%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 260px;
+            height: 40px;
             background-color: #ffffff;
             border: 2px solid #dcdcdc;
             border-bottom: 6px solid #cccccc;
-            z-index: 12;
-            box-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+            border-radius: 20px 20px 0 0;
+            z-index: 5;
         }
 
-        /* Audience Silhouettes */
-        #audience {
+        /* Table in Front */
+        #table {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 10%;
-            background: #111;
-            /* Creates rounded heads across the bottom edge */
-            background-image: radial-gradient(circle at 20px 0, #222 20px, transparent 21px);
-            background-size: 40px 20px;
-            background-repeat: repeat-x;
-            z-index: 30;
+            bottom: 12%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 30px;
+            background-color: #ffffff;
+            border: 2px solid #e0e0e0;
+            border-bottom: 4px solid #d3d3d3;
+            z-index: 25;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
         .sprite {
@@ -116,70 +125,125 @@
             cursor: pointer;
         }
 
-        /* Layered Element Sizing and Positioning */
         #drums { 
             bottom: 28%; 
-            left: 3%; 
-            width: 110px; 
-            z-index: 10; 
+            left: -2%; 
+            width: 100px; 
+            z-index: 4; 
         }
 
         #couple { 
-            bottom: 24%; 
+            bottom: 26%; 
             left: 50%; 
             width: 210px; 
             z-index: 15; 
             transform: translateX(-50%);
         }
         
-        #cake { 
-            bottom: 35%; /* Sits above the table */
-            right: 8%; 
-            width: 75px; 
-            z-index: 16; 
-        }
-        
-        #cats { 
+        /* Container for Cake and Candles */
+        #cake-container {
+            position: absolute;
             bottom: 15%; 
-            left: 20%; 
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 90px;
+            z-index: 30;
+            cursor: pointer;
+        }
+
+        #cake {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+        }
+
+        /* Candles */
+        .candle {
+            position: absolute;
+            width: 4px;
+            height: 12px;
+            background-color: #fdfdfd;
+            border-left: 1px solid #ccc;
+            z-index: 31;
+        }
+        .flame {
+            position: absolute;
+            top: -8px;
+            left: -1px;
+            width: 6px;
+            height: 8px;
+            background-color: #ffb703;
+            border-radius: 50% 50% 20% 20%;
+            animation: flicker 0.4s infinite alternate;
+        }
+
+        #cats { 
+            bottom: 5%; 
+            left: 10%; 
             width: 65px; 
-            z-index: 20; 
+            z-index: 35; 
         }
 
         /* Dynamic Dialogue Box */
         #dynamic-dialogue {
             position: absolute;
-            bottom: 12%; 
+            top: 25%; 
             left: 50%;
             transform: translateX(-50%);
             width: 80%;
-            background-color: rgba(0, 0, 0, 0.85);
-            border: 3px solid #ffffff;
-            border-radius: 4px;
-            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.95);
+            border: 2px solid #e5c158;
+            border-radius: 8px;
+            color: #333;
             padding: 12px;
             box-sizing: border-box;
-            z-index: 40;
-            font-size: 11px;
+            z-index: 50;
+            font-size: 10px;
             line-height: 1.6;
             text-align: center;
-            display: none; /* Hidden until clicked */
+            display: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        /* Animations */
+        /* Confetti */
+        .confetti {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            top: -10px;
+            z-index: 100;
+            animation: fall linear forwards;
+        }
+
+        /* Keyframes */
+        @keyframes fall {
+            to { transform: translateY(700px) rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            from { opacity: 0.4; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1.1); }
+        }
+
+        @keyframes flicker {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(0.85); opacity: 0.8; }
+        }
+
         @keyframes idle {
             0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-3px); }
+            50% { transform: translateX(-50%) translateY(-2px); }
         }
-        .idle-anim { animation: idle 3s infinite ease-in-out; }
+        .idle-anim { animation: idle 3.5s infinite ease-in-out; }
 
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
+            50% { transform: translateY(-10px); }
         }
         @keyframes bounce-center {
             0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-12px); }
+            50% { transform: translateX(-50%) translateY(-10px); }
         }
         .bounce { animation: bounce 0.3s ease; }
         .bounce-center { animation: bounce-center 0.3s ease; }
@@ -190,17 +254,32 @@
 
     <div id="game-container">
         <div id="wall"></div>
+        
+        <!-- Glowing Lights -->
+        <div class="glow-light" style="top: 15%; left: 15%;"></div>
+        <div class="glow-light" style="top: 25%; left: 85%;"></div>
+        <div class="glow-light" style="top: 35%; left: 10%;"></div>
+        <div class="glow-light" style="top: 45%; left: 80%;"></div>
+
         <div id="banner">
-            <span class="flower">*</span> HAPPY WEDDING <span class="flower">*</span>
+            <span class="flower">✿</span> HAPPY WEDDING <span class="flower">✿</span>
         </div>
-        <div id="stage"></div>
+        
+        <div id="carpet"></div>
+        <div id="dais"></div>
         <div id="table"></div>
-        <div id="audience"></div>
         
         <img src="drums.png" class="sprite" id="drums" alt="Drums">
-        <img src="cake.png" class="sprite" id="cake" alt="Wedding Cake">
         <img src="cats.png" class="sprite" id="cats" alt="Cats">
         <img src="couple.png" class="sprite idle-anim" id="couple" alt="Darius and Eveline">
+
+        <div id="cake-container">
+            <img src="cake.png" id="cake" alt="Wedding Cake">
+            <!-- Positioned candles on top of the cake -->
+            <div class="candle" style="left: 30px; bottom: 65px;"><div class="flame"></div></div>
+            <div class="candle" style="left: 40px; bottom: 75px;"><div class="flame"></div></div>
+            <div class="candle" style="left: 50px; bottom: 65px;"><div class="flame"></div></div>
+        </div>
 
         <div id="dynamic-dialogue"></div>
     </div>
@@ -226,15 +305,37 @@
                 } else {
                     hideTimeout = setTimeout(() => {
                         dialogueBox.style.display = 'none';
-                    }, 4000); // Hides box after 4 seconds
+                    }, 4000);
                 }
             }
             typeWriter();
         }
 
-        // Add interaction logic
+        function triggerBounce(element, isCenter) {
+            const animationClass = isCenter ? 'bounce-center' : 'bounce';
+            element.classList.remove(animationClass);
+            void element.offsetWidth; 
+            element.classList.add(animationClass);
+        }
+
+        function throwConfetti() {
+            const colors = ['#ff9fb4', '#e5c158', '#ffffff', '#a8e6cf'];
+            for (let i = 0; i < 40; i++) {
+                let conf = document.createElement('div');
+                conf.classList.add('confetti');
+                conf.style.left = Math.random() * 100 + '%';
+                conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                conf.style.animationDuration = (Math.random() * 1.5 + 1.5) + 's';
+                document.getElementById('game-container').appendChild(conf);
+                
+                // Cleanup DOM
+                setTimeout(() => conf.remove(), 3000);
+            }
+        }
+
+        // Interactions
         document.getElementById('cats').addEventListener('click', () => {
-            showDialogue('meow meow');
+            showDialogue('meow, meow, Darius & Eveline <3');
             triggerBounce(document.getElementById('cats'), false);
         });
 
@@ -243,20 +344,16 @@
             triggerBounce(document.getElementById('drums'), false);
         });
 
-        document.getElementById('cake').addEventListener('click', () => {
-            triggerBounce(document.getElementById('cake'), false);
+        document.getElementById('cake-container').addEventListener('click', () => {
+            const flames = document.querySelectorAll('.flame');
+            flames.forEach(flame => flame.style.display = 'none');
+            triggerBounce(document.getElementById('cake-container'), true);
         });
 
         document.getElementById('couple').addEventListener('click', () => {
+            throwConfetti();
             triggerBounce(document.getElementById('couple'), true);
         });
-
-        function triggerBounce(element, isCenter) {
-            const animationClass = isCenter ? 'bounce-center' : 'bounce';
-            element.classList.remove(animationClass);
-            void element.offsetWidth; 
-            element.classList.add(animationClass);
-        }
     </script>
 
 </body>
