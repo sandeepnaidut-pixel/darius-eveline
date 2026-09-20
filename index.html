@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Wedding Darius & Eveline</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Press Start 2P', cursive;
+            user-select: none;
+        }
+
+        #game-container {
+            width: 375px; 
+            height: 667px;
+            background-color: #f8f9fa; /* Light wedding white/gray */
+            position: relative;
+            overflow: hidden;
+            border: 4px solid #333;
+            border-radius: 8px;
+            image-rendering: pixelated;
+        }
+
+        #room {
+            width: 100%;
+            height: 80%;
+            position: relative;
+            background: linear-gradient(to bottom, #ffffff 60%, #e9ecef 60%);
+        }
+
+        .sprite {
+            position: absolute;
+            image-rendering: pixelated;
+            cursor: pointer;
+            z-index: 5;
+        }
+
+        /* Adjust these pixel values if you need to tweak the layout */
+        #couple { 
+            bottom: 5%; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 260px; 
+            z-index: 10;
+        }
+        
+        #drums { 
+            bottom: 30%; 
+            left: 5%; 
+            width: 130px; 
+        }
+        
+        #cake { 
+            bottom: 25%; 
+            right: 5%; 
+            width: 90px; 
+        }
+        
+        #cats { 
+            bottom: 10%; 
+            left: 15%; 
+            width: 65px; 
+        }
+
+        #dialogue-box {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
+            height: 90px;
+            background-color: #1a1a1a;
+            border: 3px solid #d4af37;
+            border-radius: 4px;
+            color: #ffffff;
+            padding: 12px;
+            box-sizing: border-box;
+            z-index: 20;
+        }
+
+        #speaker-name {
+            color: #d4af37;
+            font-size: 10px;
+            margin-bottom: 12px;
+        }
+
+        #dialogue-text {
+            font-size: 10px;
+            line-height: 1.6;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes bounce-center {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        .bounce { animation: bounce 0.3s ease; }
+        .bounce-center { animation: bounce-center 0.3s ease; }
+
+    </style>
+</head>
+<body>
+
+    <div id="game-container">
+        <div id="room">
+            <!-- Images inserted directly from your provided filenames -->
+            <img src="1000135300.png" class="sprite" id="drums" alt="Drums">
+            <img src="1000135301.png" class="sprite" id="cake" alt="Wedding Cake">
+            <img src="1000135304.png" class="sprite" id="cats" alt="Cats">
+            <img src="1000135308.png" class="sprite" id="couple" alt="Darius and Eveline">
+        </div>
+
+        <div id="dialogue-box">
+            <div id="speaker-name">San</div>
+            <div id="dialogue-text">Happy wedding!</div>
+        </div>
+    </div>
+
+    <script>
+        const sprites = document.querySelectorAll('.sprite');
+
+        function triggerBounce(element, isCenter) {
+            const animationClass = isCenter ? 'bounce-center' : 'bounce';
+            element.classList.remove(animationClass);
+            void element.offsetWidth; 
+            element.classList.add(animationClass);
+        }
+
+        sprites.forEach(sprite => {
+            sprite.addEventListener('click', () => {
+                const isCenter = sprite.id === 'couple';
+                triggerBounce(sprite, isCenter);
+            });
+        });
+    </script>
+
+</body>
+</html>
