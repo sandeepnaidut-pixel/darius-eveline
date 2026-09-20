@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Wedding Darius & Eveline</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         body {
             background-color: #111;
@@ -20,15 +20,16 @@
         #game-container {
             width: 375px; 
             height: 667px;
-            background-color: #fdfaf6;
+            background-color: #fce4ec;
             position: relative;
             overflow: hidden;
             border: 4px solid #fff;
             border-radius: 12px;
             image-rendering: pixelated;
-            box-shadow: 0 0 30px rgba(255, 182, 193, 0.4);
+            box-shadow: 0 0 30px rgba(233, 30, 99, 0.4);
         }
 
+        /* Pink and Purple Pastel Wallpaper */
         #wall {
             width: 100%;
             height: 70%;
@@ -36,13 +37,38 @@
             top: 0;
             background: repeating-linear-gradient(
                 45deg,
-                #fff0f5,
-                #fff0f5 20px,
-                #ffe4e1 20px,
-                #ffe4e1 40px
+                #fce4ec,
+                #fce4ec 20px,
+                #f3e5f5 20px,
+                #f3e5f5 40px
             );
         }
 
+        /* String Lights */
+        .light-wire {
+            position: absolute;
+            top: 15px;
+            left: -5%;
+            width: 110%;
+            height: 40px;
+            border-bottom: 2px solid #bcaaa4;
+            border-radius: 50%;
+            z-index: 5;
+        }
+
+        .bulb {
+            position: absolute;
+            top: 50px;
+            width: 10px;
+            height: 10px;
+            background-color: #fff9c4;
+            border-radius: 50%;
+            box-shadow: 0 0 12px 6px rgba(255, 235, 59, 0.6);
+            z-index: 6;
+            animation: pulse-light 1.5s infinite alternate;
+        }
+
+        /* Magical Floating Sparkles */
         .sparkle {
             position: absolute;
             width: 4px;
@@ -51,42 +77,40 @@
             border-radius: 50%;
             box-shadow: 0 0 8px 3px #fffacd;
             animation: twinkle 4s infinite ease-in-out;
+            z-index: 4;
         }
 
+        /* Elegant Cursive Banner */
         #banner {
             position: absolute;
-            top: 6%;
+            top: 12%;
             left: 50%;
             transform: translateX(-50%);
             width: 85%;
-            background: rgba(255, 255, 255, 0.9);
-            border: 2px solid #ffb6c1;
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid #f48fb1;
             border-radius: 20px;
-            padding: 15px 10px;
+            padding: 10px 10px;
             text-align: center;
-            color: #d87093;
-            font-family: 'Dancing Script', cursive;
-            font-size: 28px;
+            color: #880e4f;
+            font-family: 'Great Vibes', cursive;
+            font-size: 42px;
             z-index: 10;
-            box-shadow: 0px 6px 15px rgba(255, 182, 193, 0.4);
-        }
-        
-        .flower {
-            color: #ff9fb4;
-            font-size: 22px;
-            vertical-align: middle;
+            box-shadow: 0px 6px 15px rgba(244, 143, 177, 0.4);
         }
 
+        /* Lavender Carpet */
         #carpet {
             width: 100%;
             height: 28%;
             position: absolute;
             bottom: 0;
-            background-color: #f0f0f0;
-            border-top: 4px solid #e0e0e0;
+            background-color: #e1bee7;
+            border-top: 4px solid #ce93d8;
             z-index: 2;
         }
 
+        /* Dais */
         #dais {
             position: absolute;
             bottom: 24%;
@@ -94,12 +118,14 @@
             transform: translateX(-50%);
             width: 310px;
             height: 35px;
-            background-color: #ffffff;
+            background-color: #fff0f5;
             border-radius: 20px 20px 0 0;
             box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            border: 1px solid #f8bbd0;
             z-index: 5;
         }
 
+        /* Table */
         #table {
             position: absolute;
             bottom: 6%;
@@ -107,11 +133,13 @@
             transform: translateX(-50%);
             width: 180px;
             height: 45px;
-            background-color: #ffffff;
+            background-color: #fff0f5;
             border-radius: 8px;
             z-index: 25;
             box-shadow: 0 8px 12px rgba(0,0,0,0.15);
-            border-bottom: 5px solid #f5f5f5;
+            border-bottom: 5px solid #f8bbd0;
+            border-left: 1px solid #f8bbd0;
+            border-right: 1px solid #f8bbd0;
         }
 
         .sprite {
@@ -166,7 +194,7 @@
             box-shadow: 0 0 5px #ffb703;
         }
 
-        /* Adjusted Dialogue Box positioned at the bottom */
+        /* Dialogue Box */
         #dynamic-dialogue {
             position: absolute;
             bottom: 4%; 
@@ -174,17 +202,17 @@
             transform: translateX(-50%);
             width: 90%;
             background-color: rgba(255, 255, 255, 0.98);
-            border: 3px solid #ffb6c1;
+            border: 3px solid #ce93d8;
             border-radius: 12px;
-            color: #444;
+            color: #4a148c;
             padding: 12px;
             box-sizing: border-box;
-            z-index: 200; /* Extremely high z-index to stay above all elements */
+            z-index: 200; 
             font-size: 9px;
             line-height: 1.6;
             text-align: center;
             display: none;
-            box-shadow: 0 8px 20px rgba(255, 182, 193, 0.5);
+            box-shadow: 0 8px 20px rgba(206, 147, 216, 0.5);
         }
 
         .confetti {
@@ -221,6 +249,11 @@
             0%, 100% { opacity: 0.2; transform: scale(0.8); }
             50% { opacity: 1; transform: scale(1.2); }
         }
+        
+        @keyframes pulse-light {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.2); opacity: 1; }
+        }
 
         @keyframes flicker {
             0% { transform: scale(1); opacity: 1; }
@@ -248,14 +281,21 @@
 
         <div id="wall"></div>
         
-        <div class="sparkle" style="top: 20%; left: 15%; animation-delay: 0s;"></div>
-        <div class="sparkle" style="top: 30%; left: 85%; animation-delay: 1s;"></div>
+        <!-- String Lights -->
+        <div class="light-wire"></div>
+        <div class="bulb" style="left: 10%;"></div>
+        <div class="bulb" style="left: 30%;"></div>
+        <div class="bulb" style="left: 50%;"></div>
+        <div class="bulb" style="left: 70%;"></div>
+        <div class="bulb" style="left: 90%;"></div>
+        
+        <div class="sparkle" style="top: 30%; left: 15%; animation-delay: 0s;"></div>
+        <div class="sparkle" style="top: 40%; left: 85%; animation-delay: 1s;"></div>
         <div class="sparkle" style="top: 45%; left: 10%; animation-delay: 2s;"></div>
         <div class="sparkle" style="top: 50%; left: 80%; animation-delay: 0.5s;"></div>
-        <div class="sparkle" style="top: 15%; left: 50%; animation-delay: 1.5s;"></div>
 
         <div id="banner">
-            <span class="flower">✿</span> Happy Wedding <span class="flower">✿</span>
+            ~ Happy Wedding ~
         </div>
         
         <div id="carpet"></div>
@@ -319,7 +359,7 @@
         }
 
         function throwConfetti() {
-            const colors = ['#ffb6c1', '#ffc0cb', '#fffacd', '#e6e6fa', '#ffffff'];
+            const colors = ['#f48fb1', '#ce93d8', '#fffacd', '#e1bee7', '#ffffff'];
             for (let i = 0; i < 50; i++) {
                 let conf = document.createElement('div');
                 conf.classList.add('confetti');
