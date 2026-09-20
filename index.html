@@ -79,7 +79,7 @@
 
         #carpet {
             width: 100%;
-            height: 30%;
+            height: 28%;
             position: absolute;
             bottom: 0;
             background-color: #f0f0f0;
@@ -89,11 +89,11 @@
 
         #dais {
             position: absolute;
-            bottom: 22%;
+            bottom: 24%;
             left: 50%;
             transform: translateX(-50%);
-            width: 280px;
-            height: 40px;
+            width: 310px;
+            height: 35px;
             background-color: #ffffff;
             border-radius: 20px 20px 0 0;
             box-shadow: 0 6px 15px rgba(0,0,0,0.08);
@@ -102,15 +102,15 @@
 
         #table {
             position: absolute;
-            bottom: 8%;
+            bottom: 6%;
             left: 50%;
             transform: translateX(-50%);
-            width: 160px;
+            width: 180px;
             height: 45px;
             background-color: #ffffff;
             border-radius: 8px;
             z-index: 25;
-            box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
             border-bottom: 5px solid #f5f5f5;
         }
 
@@ -118,80 +118,75 @@
             position: absolute;
             image-rendering: pixelated;
             cursor: pointer;
+            transform: translateX(-50%);
         }
 
-        #drums { bottom: 25%; left: 2%; width: 100px; z-index: 8; }
-        #couple { bottom: 25%; left: 50%; width: 230px; z-index: 15; transform: translateX(-50%); }
-        #cats { bottom: 3%; left: 10%; width: 65px; z-index: 35; }
+        #couple { bottom: 25%; left: 50%; width: 230px; z-index: 15; }
+        #drums { bottom: 25%; left: 16%; width: 95px; z-index: 14; }
+        #cats { bottom: 25%; left: 84%; width: 60px; z-index: 16; }
+        
         #book {
             bottom: 12%; 
-            left: 32%; 
-            width: 50px; 
+            left: 38%; 
+            width: 45px; 
             z-index: 30; 
             filter: sepia(0.8) hue-rotate(-30deg) saturate(1.5) brightness(0.9);
         }
 
-        /* Floating Balloons */
-        .balloon {
-            width: 45px;
-            z-index: 14; /* Sits just behind the archway */
-            animation: float 4s infinite ease-in-out;
-        }
-        #balloon-left { bottom: 48%; left: 18%; animation-delay: 0s; }
-        #balloon-right { bottom: 50%; right: 18%; animation-delay: 2s; }
-
         #cake-container {
             position: absolute;
-            bottom: 11%; 
-            left: 55%; 
-            width: 75px;
-            height: 80px;
+            bottom: 12%; 
+            left: 62%; 
+            transform: translateX(-50%);
+            width: 60px;
+            height: 70px;
             z-index: 30;
             cursor: pointer;
         }
+        
         #cake { width: 100%; position: absolute; bottom: 0; }
 
         .candle {
             position: absolute;
-            width: 4px;
-            height: 14px;
+            width: 3px;
+            height: 12px;
             background-color: #fff;
             border-left: 1px solid #ccc;
             z-index: 31;
         }
         .flame {
             position: absolute;
-            top: -10px;
+            top: -8px;
             left: -1px;
-            width: 6px;
-            height: 10px;
+            width: 5px;
+            height: 8px;
             background-color: #ffb703;
             border-radius: 50% 50% 20% 20%;
             animation: flicker 0.3s infinite alternate;
             box-shadow: 0 0 5px #ffb703;
         }
 
+        /* Adjusted Dialogue Box positioned at the bottom */
         #dynamic-dialogue {
             position: absolute;
-            top: 25%; 
+            bottom: 4%; 
             left: 50%;
             transform: translateX(-50%);
-            width: 85%;
+            width: 90%;
             background-color: rgba(255, 255, 255, 0.98);
             border: 3px solid #ffb6c1;
             border-radius: 12px;
-            color: #555;
-            padding: 15px;
+            color: #444;
+            padding: 12px;
             box-sizing: border-box;
-            z-index: 50;
-            font-size: 10px;
-            line-height: 1.8;
+            z-index: 200; /* Extremely high z-index to stay above all elements */
+            font-size: 9px;
+            line-height: 1.6;
             text-align: center;
             display: none;
             box-shadow: 0 8px 20px rgba(255, 182, 193, 0.5);
         }
 
-        /* Confetti and Drumsticks */
         .confetti {
             position: absolute;
             width: 7px;
@@ -222,11 +217,6 @@
             to { transform: translateY(700px) rotate(1440deg); }
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
         @keyframes twinkle {
             0%, 100% { opacity: 0.2; transform: scale(0.8); }
             50% { opacity: 1; transform: scale(1.2); }
@@ -243,15 +233,10 @@
         }
         .idle-anim { animation: idle 3s infinite ease-in-out; }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
         @keyframes bounce-center {
             0%, 100% { transform: translateX(-50%) translateY(0); }
             50% { transform: translateX(-50%) translateY(-10px); }
         }
-        .bounce { animation: bounce 0.3s ease; }
         .bounce-center { animation: bounce-center 0.3s ease; }
 
     </style>
@@ -259,7 +244,6 @@
 <body>
 
     <div id="game-container">
-        <!-- Hidden Audio Player -->
         <audio id="bg-music" src="song.mp3" loop></audio>
 
         <div id="wall"></div>
@@ -283,15 +267,11 @@
         <img src="couple.png" class="sprite idle-anim" id="couple" alt="Darius and Eveline">
         <img src="book.png" class="sprite" id="book" alt="Bible">
         
-        <!-- Floating Balloons -->
-        <img src="balloon.png" class="sprite balloon" id="balloon-left" alt="Balloon">
-        <img src="balloon.png" class="sprite balloon" id="balloon-right" alt="Balloon">
-
         <div id="cake-container">
             <img src="cake.png" id="cake" alt="Wedding Cake">
-            <div class="candle" style="left: 28px; bottom: 60px;"><div class="flame"></div></div>
-            <div class="candle" style="left: 36px; bottom: 70px;"><div class="flame"></div></div>
-            <div class="candle" style="left: 44px; bottom: 60px;"><div class="flame"></div></div>
+            <div class="candle" style="left: 20px; bottom: 48px;"><div class="flame"></div></div>
+            <div class="candle" style="left: 28px; bottom: 58px;"><div class="flame"></div></div>
+            <div class="candle" style="left: 36px; bottom: 48px;"><div class="flame"></div></div>
         </div>
 
         <div id="dynamic-dialogue"></div>
@@ -303,7 +283,6 @@
         let hideTimeout;
         let audioStarted = false;
 
-        // Start background music on the very first tap anywhere on the screen
         document.body.addEventListener('click', () => {
             if (!audioStarted) {
                 const bgMusic = document.getElementById('bg-music');
@@ -323,7 +302,7 @@
                 if (i < text.length) {
                     dialogueBox.innerHTML += text.charAt(i);
                     i++;
-                    typeTimeout = setTimeout(typeWriter, 40);
+                    typeTimeout = setTimeout(typeWriter, 35);
                 } else {
                     hideTimeout = setTimeout(() => {
                         dialogueBox.style.display = 'none';
@@ -333,11 +312,10 @@
             typeWriter();
         }
 
-        function triggerBounce(element, isCenter) {
-            const animationClass = isCenter ? 'bounce-center' : 'bounce';
-            element.classList.remove(animationClass);
+        function triggerBounce(element) {
+            element.classList.remove('bounce-center');
             void element.offsetWidth; 
-            element.classList.add(animationClass);
+            element.classList.add('bounce-center');
         }
 
         function throwConfetti() {
@@ -366,20 +344,19 @@
 
         document.getElementById('book').addEventListener('click', () => {
             showDialogue('Colossians 3:14: "And over all these virtues put on love, which binds them all together in perfect unity."');
-            triggerBounce(document.getElementById('book'), false);
+            triggerBounce(document.getElementById('book'));
         });
 
         document.getElementById('cats').addEventListener('click', () => {
             showDialogue('meow, meow, Darius & Eveline <3');
-            triggerBounce(document.getElementById('cats'), false);
+            triggerBounce(document.getElementById('cats'));
         });
 
-        // Easter Egg Logic for the Drums
         let drumClicks = 0;
         let drumTimer;
 
         document.getElementById('drums').addEventListener('click', () => {
-            triggerBounce(document.getElementById('drums'), false);
+            triggerBounce(document.getElementById('drums'));
             drumClicks++;
             clearTimeout(drumTimer);
 
@@ -389,7 +366,6 @@
                 drumClicks = 0; 
             } else {
                 showDialogue('da dum tssss.. congrats!!');
-                // Reset the count if they stop clicking for 2 seconds
                 drumTimer = setTimeout(() => { drumClicks = 0; }, 2000);
             }
         });
@@ -397,12 +373,12 @@
         document.getElementById('cake-container').addEventListener('click', () => {
             const flames = document.querySelectorAll('.flame');
             flames.forEach(flame => flame.style.display = 'none');
-            triggerBounce(document.getElementById('cake-container'), false);
+            triggerBounce(document.getElementById('cake-container'));
         });
 
         document.getElementById('couple').addEventListener('click', () => {
             throwConfetti();
-            triggerBounce(document.getElementById('couple'), true);
+            triggerBounce(document.getElementById('couple'));
         });
     </script>
 
